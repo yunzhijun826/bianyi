@@ -35,10 +35,10 @@ public class Main {
                 if(token.contains(s)){
 //                    s.substring(0, 1).toUpperCase();
 //                    s.substring(1).toLowerCase();
-                    System.out.println(s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
+                    System.out.println("\r"+s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
                 }
                 else{
-                    System.out.println("Ident("+s+")");
+                    System.out.println("\rIdent("+s+")");
                 }
             }
             else if(Character.isDigit((char)tempchar)){
@@ -52,7 +52,7 @@ public class Main {
                 while(Int.charAt(0)=='0'&&Int.length()!=1){
                     Int=Int.substring(1);
                 }
-                System.out.println("Int("+Int+")");
+                System.out.println("\rInt("+Int+")");
                 if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                     String s = "";
                     s=s+(char)tempchar;
@@ -63,39 +63,39 @@ public class Main {
                         tempchar = reader.read();
                     }
                     if(token.contains(s)){
-                        System.out.println(s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
+                        System.out.println("\r"+s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
                     }
                     else{
-                        System.out.println("Ident("+s+")");
+                        System.out.println("\rIdent("+s+")");
                     }
                 }
             }
             else if((char)tempchar=='+'){
-                System.out.println("Plus");
+                System.out.println("\rPlus");
             }
             else if((char)tempchar==','){
-                System.out.println("Comma");
+                System.out.println("\rComma");
             }
             else if((char)tempchar=='*'){
-                System.out.println("Star");
+                System.out.println("\rStar");
             }
             else if((char)tempchar=='('){
-                System.out.println("LParenthesis");
+                System.out.println("\rLParenthesis");
             }
             else if((char)tempchar==')'){
-                System.out.println("RParenthesis");
+                System.out.println("\rRParenthesis");
             }
             else if((char)tempchar==':'){
                 tempchar = reader.read();
                 if((char)tempchar=='='){
-                    System.out.println("Assign");
+                    System.out.println("\rAssign");
                 }
                 else{
-                    System.out.println("Colon");
+                    System.out.println("\rColon");
                 }
             }
             else{
-                System.out.println("Unknown");
+                System.out.println("\rUnknown");
                 break;
             }
         }

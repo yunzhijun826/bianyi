@@ -22,6 +22,7 @@ public class Main {
             flag=0;
             while((char)tempchar == '\n'||(char)tempchar == ' '||(char)tempchar == '\r'||(char)tempchar == '\t'){
                 tempchar = reader.read();
+                flag=1;
             }
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                 flag=1;

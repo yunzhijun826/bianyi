@@ -18,7 +18,7 @@ public class Main {
         reader = new InputStreamReader(new FileInputStream(file));
         int tempchar;
         while ((tempchar = reader.read()) != -1) {
-            while((char)tempchar == '\n'||(char)tempchar == ' '||(char)tempchar == '\r'){
+            while((char)tempchar == '\n'||(char)tempchar == ' '||(char)tempchar == '\r'||(char)tempchar == '\t'){
                 tempchar = reader.read();
             }
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){

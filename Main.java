@@ -31,6 +31,7 @@ public class Main {
                     ok=1;
                     break;
                 }
+                mark=tempchar;
             }
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                 flag=1;

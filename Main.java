@@ -25,12 +25,12 @@ public class Main {
         while (ok==0) {
             flag=0;
             while((char)tempchar == '\n'||(char)tempchar == ' '||(char)tempchar == '\r'||(char)tempchar == '\t'){
+                flag=1;
                 tempchar = reader.read();
                 if(tempchar==-1){
                     ok=1;
                     break;
                 }
-                flag=1;
             }
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                 flag=1;

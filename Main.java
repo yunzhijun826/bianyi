@@ -35,9 +35,6 @@ public class Main {
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                 flag=1;
                 String s = "";
-//                s=s+(char)tempchar;
-//                tempchar = reader.read();
-//                if(tempchar==-1) ok=1;
                 while((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'||(char)tempchar>='0'&&(char)tempchar<='9'){
                     s=s+(char)tempchar;
                     tempchar = reader.read();
@@ -56,14 +53,9 @@ public class Main {
                 }
                 continue;
             }
-            if(Character.isDigit((char)tempchar)){
+            else if(Character.isDigit((char)tempchar)){
                 flag=1;
                 String Int="";
-//                Int=Int+(char)tempchar;
-//                tempchar = reader.read();
-//                if(tempchar==-1){
-//                    ok=1;
-//                }
                 while((char)tempchar>='0'&&(char)tempchar<='9'){
                     Int=Int+(char)tempchar;
                     tempchar = reader.read();
@@ -80,27 +72,27 @@ public class Main {
                 System.out.println("Int("+Int+")");
                 continue;
             }
-            if((char)tempchar=='+'){
+            else if((char)tempchar=='+'){
                 System.out.println("Plus");
                 flag=1;
             }
-            if((char)tempchar==','){
+            else if((char)tempchar==','){
                 System.out.println("Comma");
                 flag=1;
             }
-            if((char)tempchar=='*'){
+            else if((char)tempchar=='*'){
                 System.out.println("Star");
                 flag=1;
             }
-            if((char)tempchar=='('){
+            else if((char)tempchar=='('){
                 System.out.println("LParenthesis");
                 flag=1;
             }
-            if((char)tempchar==')'){
+            else if((char)tempchar==')'){
                 System.out.println("RParenthesis");
                 flag=1;
             }
-            if((char)tempchar==':'){
+            else if((char)tempchar==':'){
                 flag=1;
                 tempchar = reader.read();
                 if(tempchar==-1){
@@ -116,7 +108,7 @@ public class Main {
                     continue;
                 }
             }
-            if(flag==0){
+            else if(flag==0){
                 System.out.println("Unknown");
                 break;
             }

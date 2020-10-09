@@ -109,9 +109,11 @@ public class Main {
                     continue;
                 }
             }
-            else if(flag==0){
-                System.out.println("Unknown");
-                break;
+            else{
+                if(tempchar!=-1){
+                    System.out.println("Unknown");
+                    break;
+                }
             }
             tempchar = reader.read();
             if(tempchar==-1){

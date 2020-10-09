@@ -18,62 +18,67 @@ public class Main {
         Reader reader = null;
         reader = new InputStreamReader(new FileInputStream(file));
         int tempchar;
-        while ((tempchar = reader.read()) != -1) {
+        int mark;
+        int ok=0;
+        tempchar = reader.read();
+        mark=tempchar;
+        while (ok==0) {
             flag=0;
             while((char)tempchar == '\n'||(char)tempchar == ' '||(char)tempchar == '\r'||(char)tempchar == '\t'){
                 tempchar = reader.read();
+                if(tempchar==-1){
+                    ok=1;
+                    break;
+                }
                 flag=1;
             }
             if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
                 flag=1;
                 String s = "";
-                //System.out.println(s);
-//                s.append((char)tempchar);
-                s=s+(char)tempchar;
-                tempchar = reader.read();
+//                s=s+(char)tempchar;
+//                tempchar = reader.read();
+//                if(tempchar==-1) ok=1;
                 while((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'||(char)tempchar>='0'&&(char)tempchar<='9'){
-//                    s.append((char)tempchar);
                     s=s+(char)tempchar;
                     tempchar = reader.read();
+                    if(tempchar==-1){
+                        ok=1;
+                        break;
+                    }
+                    mark=tempchar;
                 }
+                tempchar=mark;
                 if(token.contains(s)){
-//                    s.substring(0, 1).toUpperCase();
-//                    s.substring(1).toLowerCase();
                     System.out.println(s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
                 }
                 else{
                     System.out.println("Ident("+s+")");
                 }
+                continue;
             }
             if(Character.isDigit((char)tempchar)){
                 flag=1;
                 String Int="";
-                Int=Int+(char)tempchar;
-                tempchar = reader.read();
+//                Int=Int+(char)tempchar;
+//                tempchar = reader.read();
+//                if(tempchar==-1){
+//                    ok=1;
+//                }
                 while((char)tempchar>='0'&&(char)tempchar<='9'){
                     Int=Int+(char)tempchar;
                     tempchar = reader.read();
+                    if(tempchar==-1){
+                        ok=1;
+                        break;
+                    }
+                    mark=tempchar;
                 }
+                tempchar=mark;
                 while(Int.charAt(0)=='0'&&Int.length()!=1){
                     Int=Int.substring(1);
                 }
                 System.out.println("Int("+Int+")");
-                if((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'){
-                    String s = "";
-                    s=s+(char)tempchar;
-                    tempchar = reader.read();
-                    while((char)tempchar>='a'&&(char)tempchar<='z'||(char)tempchar>='A'&&(char)tempchar<='Z'||(char)tempchar>='0'&&(char)tempchar<='9'){
-//                    s.append((char)tempchar);
-                        s=s+(char)tempchar;
-                        tempchar = reader.read();
-                    }
-                    if(token.contains(s)){
-                        System.out.println(s.substring(0, 1).toUpperCase()+s.substring(1).toLowerCase());
-                    }
-                    else{
-                        System.out.println("Ident("+s+")");
-                    }
-                }
+                continue;
             }
             if((char)tempchar=='+'){
                 System.out.println("Plus");
@@ -98,17 +103,28 @@ public class Main {
             if((char)tempchar==':'){
                 flag=1;
                 tempchar = reader.read();
+                if(tempchar==-1){
+                    ok=1;
+                }
+                mark=tempchar;
                 if((char)tempchar=='='){
                     System.out.println("Assign");
                 }
                 else{
+                    tempchar=mark;
                     System.out.println("Colon");
+                    continue;
                 }
             }
             if(flag==0){
                 System.out.println("Unknown");
                 break;
             }
+            tempchar = reader.read();
+            if(tempchar==-1){
+                break;
+            }
+            mark=tempchar;
         }
         reader.close();
     }
@@ -116,9 +132,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Main m=new Main();
         m.addList();
-        //Scanner input=new Scanner(System.in);
         String filePath=args[0];
-        //String filePath=input.next();
         m.readFile(filePath);
 
     }
